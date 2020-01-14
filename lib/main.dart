@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'sohan.dart';
 
 class Main extends StatelessWidget {
   @override
@@ -16,3 +17,4 @@ class MyScaffold extends StatelessWidget {
   }
 }
 
+void main() => runApp(MyApp());
