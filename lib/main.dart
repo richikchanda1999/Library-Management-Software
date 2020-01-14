@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Manul.dart';
+
 class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -16,3 +18,4 @@ class MyScaffold extends StatelessWidget {
   }
 }
 
+void main() => runApp(MyApp());
