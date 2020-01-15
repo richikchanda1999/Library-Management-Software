@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:library_management/support.dart';
 
-class MyApp extends StatelessWidget {
+class LibrarianIntro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
