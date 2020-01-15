@@ -7,6 +7,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Professor',
       home: MyScaffold(),
     );
@@ -24,6 +25,27 @@ class MyScaffold extends StatelessWidget {
       body: Stack(
         children: <Widget>[
           MyStackWidget(
+            top: 600,
+            start: 145,
+            height: 32,
+            width: 100,
+            child: Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.only(top: 8, bottom: 10, left:10, right: 10),
+              decoration: ShapeDecoration(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20.0)
+                  ),
+                ),
+                color: Color(0xff645beb)),
+                child: Text("Continue", textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15, fontFamily: "Raleway Light"))
+            ),
+          ),
+          MyStackWidget(
             start: 59.21,
             width: 272.79,
             top: 167,
@@ -39,15 +61,15 @@ class MyScaffold extends StatelessWidget {
               child: Text("Teacher", textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.black,
-                      fontSize: 30))
+                      fontSize: 30, fontFamily: "Raleway"))
           ),
           MyStackWidget(
               start: 41,
               end: 41,
-              top: 500,
+              top: 480,
               height: 25,
               child: Text("I need to think of something to put here", textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.black, fontSize: 15))
+                  style: TextStyle(color: Colors.black, fontSize: 15, fontFamily: "Raleway"))
           )
         ],
       ),
