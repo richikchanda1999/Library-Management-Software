@@ -18,6 +18,7 @@ environment:
 
 dependencies:
   flutter_svg: 0.15.0
+
   flutter:
     sdk: flutter
   flutter_screenutil: ^1.0.2
@@ -60,6 +61,42 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+    - family: Raleway Extra Light
+      fonts:
+        - asset: fonts/Raleway/Raleway-ExtraLight.ttf
+        - asset: fonts/Raleway/Raleway-ExtraLightItalic.ttf
+          style: italic
+    - family: Raleway Light
+      fonts:
+        - asset: fonts/Raleway/Raleway-Light.ttf
+        - asset: fonts/Raleway/Raleway-LightItalic.ttf
+          style: italic
+    - family: Raleway
+      fonts:
+        - asset: fonts/Raleway/Raleway-Regular.ttf
+        - asset: fonts/Raleway/Raleway-Italic.ttf
+          style: italic
+    - family: Raleway Thin
+      fonts:
+        - asset: fonts/Raleway/Raleway-Thin.ttf
+        - asset: fonts/Raleway/Raleway-ThinItalic.ttf
+          style: italic
+    - family: Raleway Medium
+      fonts:
+        - asset: fonts/Raleway/Raleway-Medium.ttf
+        - asset: fonts/Raleway/Raleway-MediumItalic.ttf
+          style: italic
+    - family: Raleway Semi Bold
+      fonts:
+        - asset: fonts/Raleway/Raleway-SemiBold.ttf
+        - asset: fonts/Raleway/Raleway-SemiBoldItalic.ttf
+          style: italic
+    - family: Raleway Bold
+      fonts:
+        - asset: fonts/Raleway/Raleway-Bold.ttf
+        - asset: fonts/Raleway/Raleway-BoldItalic.ttf
+          style: italic
   # fonts:
   #   - family: Schyler
   #     fonts:
