@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'UI/Manul.dart';
+import 'UI/mansi.dart';
 
 class Main extends StatelessWidget {
   @override

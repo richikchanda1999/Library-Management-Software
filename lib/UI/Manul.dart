@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:library_management/support.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -50,13 +51,5 @@ class MyScaffold extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class HWLR extends StatelessWidget {
-  double height, width, left, right;
-  @override
-  Widget build(BuildContext context) {
-    return ;
   }
 }
