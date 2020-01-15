@@ -26,9 +26,9 @@ class MyScaffold extends StatelessWidget {
         children: <Widget>[
           MyStackWidget(
             top: 600,
-            start: 145,
+            start: 130,
             height: 32,
-            width: 100,
+            end: 130,
             child: Container(
               alignment: Alignment.center,
               padding: EdgeInsets.only(top: 8, bottom: 10, left:10, right: 10),
@@ -46,7 +46,7 @@ class MyScaffold extends StatelessWidget {
             ),
           ),
           MyStackWidget(
-            start: 59.21,
+            start: 55,
             width: 272.79,
             top: 167,
             height: 211.9,
@@ -56,8 +56,9 @@ class MyScaffold extends StatelessWidget {
                 width: w(272.79)),
           ),
           MyStackWidget(
-              start: 145,
+              start: 125,
               top: 426,
+              end: 125,
               child: Text("Teacher", textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.black,
