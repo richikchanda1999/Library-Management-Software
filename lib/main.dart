@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:library_management/yash.dart';
 
 class Main extends StatelessWidget {
   @override
@@ -15,4 +16,6 @@ class MyScaffold extends StatelessWidget {
     return Scaffold();
   }
 }
+
+void main() => runApp(LoginPage());
 
