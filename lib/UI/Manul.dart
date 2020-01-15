@@ -31,7 +31,7 @@ class MyScaffold extends StatelessWidget {
             end: 130,
             child: Container(
               alignment: Alignment.center,
-              padding: EdgeInsets.only(top: 8, bottom: 10, left:10, right: 10),
+              padding: EdgeInsets.only(top: h(8), bottom: h(10), left:w(10), right: w(10)),
               decoration: ShapeDecoration(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(
@@ -42,7 +42,7 @@ class MyScaffold extends StatelessWidget {
                 child: Text("Continue", textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 15, fontFamily: "Raleway Light"))
+                      fontSize: sp(15), fontFamily: "Raleway Light"))
             ),
           ),
           MyStackWidget(
@@ -62,7 +62,7 @@ class MyScaffold extends StatelessWidget {
               child: Text("Teacher", textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.black,
-                      fontSize: 30, fontFamily: "Raleway"))
+                      fontSize: sp(30), fontFamily: "Raleway"))
           ),
           MyStackWidget(
               start: 41,
@@ -70,7 +70,7 @@ class MyScaffold extends StatelessWidget {
               top: 480,
               height: 25,
               child: Text("I need to think of something to put here", textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.black, fontSize: 15, fontFamily: "Raleway"))
+                  style: TextStyle(color: Colors.black, fontSize: sp(15), fontFamily: "Raleway"))
           )
         ],
       ),
