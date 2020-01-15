@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:library_management/UI/TeacherBookIssue.dart';
+import 'UI/sohan.dart' as sohan;
+import 'UI/TeacherBookIssue.dart';
+import 'UI/StudentBookIssue.dart';
 import 'UI/Manul.dart' as manul;
 import 'UI/StudentRegistration.dart' as soumyajit;
 import 'UI/TecherRegistration.dart' as teach;
@@ -23,4 +27,5 @@ class MyScaffold extends StatelessWidget {
   }
 }
 
-void main() => runApp(teach.TeachReg());
+void main() => runApp(TeacherBookIssuePage());
+

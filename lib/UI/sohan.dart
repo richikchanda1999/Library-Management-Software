@@ -76,7 +76,8 @@ class MyScaffold extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: sp(18),
+                      fontSize: sp(15),
+
                       fontFamily: "Raleway Light"))),
         ),
       ]),
