@@ -19,9 +19,9 @@ class MyScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     ScreenUtil.init(context, width: 375, height: 812, allowFontScaling: true);
     return Scaffold(
-//        appBar: AppBar(
-//          title: Text('Professor'),
-//        ),
+        appBar: AppBar(
+          title: Text('Professor'),
+        ),
       body: Stack(
         children: <Widget>[
           MyStackWidget(
