@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'UI/Manul.dart' as manul;
 import 'UI/ManulVerifyTeacher.dart';
 import 'UI/sohan.dart' as sohan;
+
 
 class Main extends StatelessWidget {
   @override
@@ -20,4 +22,8 @@ class MyScaffold extends StatelessWidget {
   }
 }
 
+
+
+
 void main() => runApp(StudentVerify());
+
