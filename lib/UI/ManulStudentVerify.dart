@@ -80,7 +80,7 @@ class MyScaffold extends StatelessWidget {
                     color: Color(0xfff8baba)),
                 child: Text("Reject", textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: Color(0xff543a3a),
+                        color: Color(0xff543A3A),
                         fontSize: sp(15), fontFamily: "Raleway Light"))
             ),
           ),
@@ -95,17 +95,18 @@ class MyScaffold extends StatelessWidget {
                 width: w(272.79)),
           ),
           MyStackWidget(
-              start: 15,
+              start: 46,
+              end: 46,
               top: 426,
               child: Text("Verify Student", textAlign: TextAlign.left,
                   style: TextStyle(
-                      color: Colors.black,
-                      fontSize: sp(30), fontFamily: "Raleway"))
+                      color: Color(0xff283350),
+                      fontSize: sp(28), fontFamily: "Raleway"))
           ),
           MyStackWidget(
               start: 57,
               end: 220,
-              top: 660,
+              top: 670,
               height: 20,
               child: Text("Sam Smith", textAlign: TextAlign.center,
                   style: TextStyle(color: Colors.black, fontSize: sp(15), fontFamily: "Raleway"))

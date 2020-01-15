@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'UI/Manul.dart' as manul;
+import 'UI/ManulStudentVerify.dart';
 import 'UI/ManulVerifyTeacher.dart';
 import 'UI/sohan.dart' as sohan;
 
@@ -21,9 +22,6 @@ class MyScaffold extends StatelessWidget {
     return Scaffold();
   }
 }
-
-
-
 
 void main() => runApp(StudentVerify());
 

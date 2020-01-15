@@ -30,16 +30,15 @@ class MyScaffold extends StatelessWidget {
             height: 125,
             end: 221,
             child: Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.only(top: h(20), bottom: h(11), left:w(44), right: w(40)),
-                decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(10.0)
-                      ),
-                    ),
-                    color: Colors.white),
+              alignment: Alignment.center,
+              padding: EdgeInsets.only(
+                  top: h(20), bottom: h(11), left: w(44), right: w(40)),
+              decoration: ShapeDecoration(
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.black),
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  ),
+                  color: Colors.white),
             ),
           ),
           MyStackWidget(
@@ -49,19 +48,19 @@ class MyScaffold extends StatelessWidget {
             end: 56,
             child: Container(
                 alignment: Alignment.center,
-                padding: EdgeInsets.only(top: h(13), bottom: h(11), left:w(44), right: w(40)),
+                padding: EdgeInsets.only(
+                    top: h(13), bottom: h(11), left: w(44), right: w(40)),
                 decoration: ShapeDecoration(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(20.0)
-                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     ),
                     color: Color(0xffbaf8bc)),
-                child: Text("Accept", textAlign: TextAlign.center,
+                child: Text("Accept",
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Color(0xff3d5a3e),
-                        fontSize: sp(15), fontFamily: "Raleway Light"))
-            ),
+                        fontSize: sp(15),
+                        fontFamily: "Raleway Light"))),
           ),
           MyStackWidget(
             top: 587,
@@ -70,46 +69,52 @@ class MyScaffold extends StatelessWidget {
             end: 56,
             child: Container(
                 alignment: Alignment.center,
-                padding: EdgeInsets.only(top: h(13), bottom: h(11), left:w(44), right: w(40)),
+                padding: EdgeInsets.only(
+                    top: h(13), bottom: h(11), left: w(44), right: w(40)),
                 decoration: ShapeDecoration(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(20.0)
-                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     ),
                     color: Color(0xfff8baba)),
-                child: Text("Reject", textAlign: TextAlign.center,
+                child: Text("Reject",
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Color(0xff543a3a),
-                        fontSize: sp(15), fontFamily: "Raleway Light"))
-            ),
+                        fontSize: sp(15),
+                        fontFamily: "Raleway Light"))),
           ),
           MyStackWidget(
             start: 55,
             width: 272.79,
             top: 167,
             height: 211.9,
-            child: SvgPicture.asset('assets/undraw_two_factor_authentication_namy.svg',
+            child: SvgPicture.asset(
+                'assets/undraw_two_factor_authentication_namy.svg',
                 semanticsLabel: 'Authentication',
                 height: h(211.9),
                 width: w(272.79)),
           ),
           MyStackWidget(
-              start: 15,
+              start: 46,
+              end: 46,
               top: 426,
-              child: Text("Verify Teacher", textAlign: TextAlign.left,
+              child: Text("Verify Teacher",
+                  textAlign: TextAlign.left,
                   style: TextStyle(
-                      color: Colors.black,
-                      fontSize: sp(30), fontFamily: "Raleway"))
-          ),
+                      color: Color(0xff283350),
+                      fontSize: sp(28),
+                      fontFamily: "Raleway"))),
           MyStackWidget(
               start: 57,
               end: 220,
-              top: 660,
+              top: 670,
               height: 20,
-              child: Text("John Legend", textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.black, fontSize: sp(15), fontFamily: "Raleway"))
-          )
+              child: Text("John Legend",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: sp(15),
+                      fontFamily: "Raleway")))
         ],
       ),
     );
