@@ -26,12 +26,12 @@ class MyScaffold extends StatelessWidget {
         children: <Widget>[
           MyStackWidget(
             top: 600,
-            start: 145,
+            start: 130,
             height: 32,
-            width: 100,
+            end: 130,
             child: Container(
               alignment: Alignment.center,
-              padding: EdgeInsets.only(top: 8, bottom: 10, left:10, right: 10),
+              padding: EdgeInsets.only(top: h(8), bottom: h(10), left:w(10), right: w(10)),
               decoration: ShapeDecoration(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(
@@ -42,11 +42,11 @@ class MyScaffold extends StatelessWidget {
                 child: Text("Continue", textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 15, fontFamily: "Raleway Light"))
+                      fontSize: sp(15), fontFamily: "Raleway Light"))
             ),
           ),
           MyStackWidget(
-            start: 59.21,
+            start: 55,
             width: 272.79,
             top: 167,
             height: 211.9,
@@ -56,12 +56,13 @@ class MyScaffold extends StatelessWidget {
                 width: w(272.79)),
           ),
           MyStackWidget(
-              start: 145,
+              start: 125,
               top: 426,
+              end: 125,
               child: Text("Teacher", textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.black,
-                      fontSize: 30, fontFamily: "Raleway"))
+                      fontSize: sp(30), fontFamily: "Raleway"))
           ),
           MyStackWidget(
               start: 41,
@@ -69,7 +70,7 @@ class MyScaffold extends StatelessWidget {
               top: 480,
               height: 25,
               child: Text("I need to think of something to put here", textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.black, fontSize: 15, fontFamily: "Raleway"))
+                  style: TextStyle(color: Colors.black, fontSize: sp(15), fontFamily: "Raleway"))
           )
         ],
       ),
