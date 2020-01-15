@@ -24,56 +24,57 @@ class MyScaffold extends StatelessWidget {
 //        ),
       body: Stack(
         children: <Widget>[
-          Positioned(
-              top: h(179),
-              left: w(58),
-              height: h(212),
-              width: w(259.51),
-              child: SvgPicture.asset('assets/undraw_exams_g4ow.svg',
-                height: h(212),
-                width: w(259.51),)
-          ),
-          Positioned(
-              top:h(430),
-              left:w(137),
-              height: h(33),
-              right: w(137),
-              child: Text("Student", textAlign: TextAlign.center,
-                  style: TextStyle(color: Color(0xff283350),
-                      fontStyle: FontStyle.normal,
-                      fontSize: 30)
-              )
-          ),
-          Positioned(
-              top:h(474),
-              left:w(44),
-              height: h(38),
-              right: w(44),
-              child: Text("to be decided", textAlign: TextAlign.center,
-                  style: TextStyle(color: Color(0xff283350),
-                      fontStyle: FontStyle.normal,
-                      fontSize: 16
-                   )
-              )
-          ),
-          Positioned(
-            top:h(587),
-            left:w(130),
-            height:h(44),
-            right:w(130),
+          MyStackWidget(
+              top: 179,
+              start: 58,
+              height: 212,
+              width: 259.51,
+              child: SvgPicture.asset(
+                'assets/undraw_exams_g4ow.svg',
+                //height: h(212),
+                //width: w(259.51),
+              )),
+          MyStackWidget(
+              top: 430,
+              start: 130,
+              height: 33,
+              end: 130,
+              child: Text("Student",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Color(0xff283350),
+                      fontFamily: "Raleway",
+                      fontSize: sp(30)))),
+          MyStackWidget(
+              top: 474,
+              start: 44,
+              height: 38,
+              end: 44,
+              child: Text("to be decided",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Color(0xff283350),
+                      fontFamily: "Raleway",
+                      fontSize: sp(15)))),
+          MyStackWidget(
+            top: 587,
+            start: 130,
+            height: 32,
+            end: 130,
             child: Container(
-              child: Text('Continue', textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white,
-                  fontSize: 12)
-            ),
-            decoration: BoxDecoration(color: Color(0xff645BEB),
-            borderRadius: new BorderRadius.only(
-                topLeft:  const  Radius.circular(30.0),
-                topRight: const  Radius.circular(30.0),
-                bottomLeft: const Radius.circular(30.0),
-                bottomRight: const Radius.circular(30.0))
-            ),
-          )),
+                alignment: Alignment.center,
+                decoration: ShapeDecoration(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                    ),
+                    color: Color(0xff645beb)),
+                child: Text("Continue",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: sp(16),
+                        fontFamily: "Raleway Light"))),
+          ),
         ],
       ),
     );

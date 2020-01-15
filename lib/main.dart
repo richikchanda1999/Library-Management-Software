@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'UI/sohan.dart' as sohan;
-import 'UI/mansi.dart';
+import 'UI/mansi.dart' as mansi;
 
 class Main extends StatelessWidget {
   @override
@@ -19,5 +19,5 @@ class MyScaffold extends StatelessWidget {
   }
 }
 
-void main() => runApp(sohan.MyApp());
+void main() => runApp(mansi.MyApp());
 
