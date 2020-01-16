@@ -17,12 +17,16 @@ class LoginPage extends StatelessWidget {
 class MyScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, width: 375, height: 812, allowFontScaling: true);
+    Orientation o = MediaQuery.of(context).orientation;
+    ScreenUtil.init(context,
+        width: (o == Orientation.portrait) ? 375 : 812,
+        height: (o == Orientation.portrait) ? 812 : 375,
+        allowFontScaling: true);
     return Scaffold(
       body: SingleChildScrollView(
         child: SizedBox(
-          width: w(375),
-          height: h(812),
+          width: (o == Orientation.portrait) ? w(375) : w(812),
+          height: (o == Orientation.portrait) ? h(812) : w(812),
           child: Stack(
             children: <Widget>[
               MyStackWidget(
@@ -91,7 +95,6 @@ class MyScaffold extends StatelessWidget {
                     fillColor: Color(0xffDDDBFE).withOpacity(0.5),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(120),
-
                       borderSide: BorderSide(
                         width: 0,
                         style: BorderStyle.none,
@@ -104,14 +107,16 @@ class MyScaffold extends StatelessWidget {
               MyStackWidget(
                 top: 606,
                 //bottom: 10,
-                start: 180,
-                height: 50,
-                end: 50,
+                start: 59,
+                height: 32,
+                end: 59,
                 child: RaisedButton(
                   child: Text(
                     'Continue',
                     style: TextStyle(
-                        fontFamily: "Raleway Light", fontSize: sp(16)),
+                        color: Colors.white,
+                        fontFamily: "Raleway Light",
+                        fontSize: sp(16)),
                   ),
                   color: Color(0xff645BEB),
                   padding:

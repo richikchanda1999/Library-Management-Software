@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:library_management/UI/Login.dart';
+import 'UI/ViewSearchResult.dart' as search;
 
 class Main extends StatelessWidget {
   @override
@@ -16,3 +18,4 @@ class MyScaffold extends StatelessWidget {
   }
 }
 
+void main() => runApp(search.Main());
