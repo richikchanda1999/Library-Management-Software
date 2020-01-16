@@ -45,7 +45,7 @@ class MyScaffold extends StatelessWidget {
                 top: 215,
                 bottom: 37,
                 child: ListView.separated(
-                    padding: EdgeInsets.all(0),
+                    padding: EdgeInsets.only(left: w(8), right: w(8)),
                     itemBuilder: (_, __) {
                       return SizedBox(
                         height: h(160),

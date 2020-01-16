@@ -3,6 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:library_management/main.dart';
 import 'package:library_management/support.dart';
+import 'package:speech_to_text/speech_to_text.dart' as stt;
+import 'package:speech_to_text/speech_to_text.dart';
+import 'package:http/http.dart' as http;
 
 class SearchBooks extends StatelessWidget {
   @override
@@ -14,7 +17,74 @@ class SearchBooks extends StatelessWidget {
   }
 }
 
-class MyScaffold extends StatelessWidget {
+class MyScaffold extends StatefulWidget {
+  @override
+  _MyScaffoldState createState() => _MyScaffoldState();
+}
+
+class _MyScaffoldState extends State<MyScaffold> {
+  bool _hasSpeech = false;
+  String lastWords = "";
+  String lastError = "";
+  String lastStatus = "";
+  final SpeechToText speech = SpeechToText();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initSpeechState();
+  }
+
+  Future<void> initSpeechState() async {
+    bool hasSpeech = await speech.initialize(onError: (error) {
+      setState(() {
+        lastError = "${error.errorMsg} - ${error.permanent}";
+      });
+    }, onStatus: (status) {
+      setState(() {
+        lastStatus = "$status";
+      });
+    });
+
+    if (!mounted) return;
+    setState(() {
+      _hasSpeech = hasSpeech;
+    });
+  }
+
+  void startListening() {
+    lastWords = "";
+    lastError = "";
+    speech.listen(onResult: (result) async {
+      if (result.finalResult) {
+        String recognised = result.recognizedWords;
+        //print("Recognised : $recognised");
+        recognised = recognised.replaceAll(" ", "+");
+        String url =
+            "https://www.googleapis.com/books/v1/volumes?q=" + recognised;
+        //print("Url : $url");
+        final res = await http.get(url);
+        if (res.statusCode == 200) {
+          print(res.body);
+        } else {
+          throw Exception('Error: ${res.statusCode}');
+        }
+      }
+    });
+    setState(() {});
+  }
+
+  void stopListening() {
+    speech.stop();
+    setState(() {});
+  }
+
+  void cancelListening() {
+    speech.cancel();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context, width: 375, height: 812, allowFontScaling: true);
@@ -60,6 +130,26 @@ class MyScaffold extends StatelessWidget {
                 width: 60,
                 child: CircularButton(
                   path: "assets/speaker.svg",
+                  onTap: () {
+                    startListening();
+                    showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (_) {
+                          return Dialog(
+                            child: Center(
+                              child: IconButton(
+                                icon: Icon(Icons.cancel),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                  stopListening();
+                                  cancelListening();
+                                },
+                              ),
+                            ),
+                          );
+                        });
+                  },
                 ),
               ),
               MyStackWidget(
@@ -91,7 +181,7 @@ class MyScaffold extends StatelessWidget {
                 end: 44,
                 child: TextField(
                   style: TextStyle(
-                    color: Color(0xff645BEB), fontFamily: "Ubuntu Light"),
+                      color: Color(0xff645BEB), fontFamily: "Ubuntu Light"),
                   decoration: InputDecoration(
                     filled: true,
                     hintText: 'Type To Search',
