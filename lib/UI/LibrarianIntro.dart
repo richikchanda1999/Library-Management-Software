@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:library_management/support.dart';
 
-class MyApp extends StatelessWidget {
+class LibrarianIntro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -76,7 +76,8 @@ class MyScaffold extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 15,
+                      fontSize: sp(15),
+
                       fontFamily: "Raleway Light"))),
         ),
       ]),

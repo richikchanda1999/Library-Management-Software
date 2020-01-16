@@ -97,6 +97,26 @@ flutter:
         - asset: fonts/Raleway/Raleway-Bold.ttf
         - asset: fonts/Raleway/Raleway-BoldItalic.ttf
           style: italic
+    - family: Ubuntu Light
+      fonts:
+        - asset: fonts/Ubuntu/Ubuntu-Light.ttf
+        - asset: fonts/Ubuntu/Ubuntu-LightItalic.ttf
+          style: italic
+    - family: Ubuntu
+      fonts:
+        - asset: fonts/Ubuntu/Ubuntu-Regular.ttf
+        - asset: fonts/Ubuntu/Ubuntu-RegularItalic.ttf
+          style: italic
+    - family: Ubuntu Medium
+      fonts:
+        - asset: fonts/Ubuntu/Ubuntu-Medium.ttf
+        - asset: fonts/Ubuntu/Ubuntu-MediumItalic.ttf
+          style: italic
+    - family: Ubuntu Bold
+      fonts:
+        - asset: fonts/Ubuntu/Ubuntu-Bold.ttf
+        - asset: fonts/Ubuntu/Ubuntu-BoldItalic.ttf
+          style: italic
   # fonts:
   #   - family: Schyler
   #     fonts:

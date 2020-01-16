@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:library_management/UI/login.dart';
 import 'UI/sohan.dart' as sohan;
 
@@ -9,7 +10,6 @@ class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
       home: MyScaffold(),
     );
   }
@@ -21,8 +21,4 @@ class MyScaffold extends StatelessWidget {
     return Scaffold();
   }
 }
-
-
-void main() => runApp(streams.Main());
-
 
