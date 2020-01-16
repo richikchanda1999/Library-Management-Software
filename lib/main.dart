@@ -4,6 +4,7 @@ import 'package:library_management/UI/SearchBooks.dart';
 
 import 'package:library_management/UI/Login.dart';
 import 'UI/ViewSearchResult.dart' as search;
+import 'UI/ViewSearchResult.dart';
 
 
 class Main extends StatelessWidget {
