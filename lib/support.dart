@@ -12,32 +12,43 @@ class MyStackWidget extends StatelessWidget {
   Widget child;
   MyStackWidget(
       {this.start,
-        this.width,
-        this.top,
-        this.height,
-        this.end,
-        this.bottom,
-        this.child});
+      this.width,
+      this.top,
+      this.height,
+      this.end,
+      this.bottom,
+      this.child});
   @override
   Widget build(BuildContext context) {
     return Positioned.directional(
         textDirection: TextDirection.ltr,
-        start: (start != null)
-            ? ScreenUtil().setWidth(start - leftOffset)
-            : null,
+        start:
+            (start != null) ? ScreenUtil().setWidth(start - leftOffset) : null,
         width: (width != null) ? ScreenUtil().setWidth(width + 5) : null,
-        top: (top != null)
-            ? ScreenUtil().setHeight(top - topOffset)
-            : null,
-        height: (height != null)
-            ? ScreenUtil().setHeight(height + 10)
-            : null,
-        end: (end != null)
-            ? ScreenUtil().setWidth(end - rightOffset)
-            : null,
+        top: (top != null) ? ScreenUtil().setHeight(top - topOffset) : null,
+        height: (height != null) ? ScreenUtil().setHeight(height + 10) : null,
+        end: (end != null) ? ScreenUtil().setWidth(end - rightOffset) : null,
         bottom: (bottom != null)
             ? ScreenUtil().setHeight(bottom - bottomOffset)
             : null,
         child: child);
+  }
+}
+
+class MyPath extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var p = Path();
+    p.lineTo(0, size.height * 0.65);
+    p.quadraticBezierTo(
+        size.width * 0.5, size.height, size.width, size.height * 0.65);
+    p.lineTo(size.width, 0);
+    p.lineTo(0, 0);
+    return p;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return true;
   }
 }
