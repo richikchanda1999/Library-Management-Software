@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:library_management/UI/yash.dart';
+import 'package:library_management/UI/login.dart';
 import 'UI/sohan.dart' as sohan;
 
 import 'UI/Manul.dart' as manul;
+import 'UI/Streams.dart' as streams;
 
 class Main extends StatelessWidget {
   @override
@@ -22,6 +23,6 @@ class MyScaffold extends StatelessWidget {
 }
 
 
-void main() => runApp(LoginPage());
+void main() => runApp(streams.Main());
 
 
