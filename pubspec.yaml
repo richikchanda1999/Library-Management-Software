@@ -21,6 +21,7 @@ dependencies:
   googleapis_auth: 0.2.11+1
   http:
   speech_to_text: 0.7.2
+  rxdart: 0.23.1
   flutter:
     sdk: flutter
   flutter_screenutil: ^1.0.2

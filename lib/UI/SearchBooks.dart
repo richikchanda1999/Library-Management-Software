@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:library_management/BLoC/SearchBLoC.dart';
+import 'package:library_management/UI/ViewSearchResult.dart';
 import 'package:library_management/main.dart';
 import 'package:library_management/support.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
@@ -56,20 +58,17 @@ class _MyScaffoldState extends State<MyScaffold> {
   void startListening() {
     lastWords = "";
     lastError = "";
-    speech.listen(onResult: (result) async {
+    speech.listen(onResult: (result) {
       if (result.finalResult) {
         String recognised = result.recognizedWords;
         //print("Recognised : $recognised");
         recognised = recognised.replaceAll(" ", "+");
-        String url =
-            "https://www.googleapis.com/books/v1/volumes?q=" + recognised;
-        //print("Url : $url");
-        final res = await http.get(url);
-        if (res.statusCode == 200) {
-          print(res.body);
-        } else {
-          throw Exception('Error: ${res.statusCode}');
-        }
+        String url = "https://www.googleapis.com/books/v1/volumes?q=" +
+            recognised + "&orderBy=relevance";
+        fetchBooks(url);
+        Navigator.of(context).pop(this);
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (_) => SearchResult()));
       }
     });
     setState(() {});
@@ -141,7 +140,7 @@ class _MyScaffoldState extends State<MyScaffold> {
                               child: IconButton(
                                 icon: Icon(Icons.cancel),
                                 onPressed: () {
-                                  Navigator.of(context).pop();
+                                  Navigator.of(context).pop(this);
                                   stopListening();
                                   cancelListening();
                                 },
