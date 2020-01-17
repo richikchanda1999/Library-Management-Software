@@ -33,9 +33,18 @@ void parseBookJson(String jsonStr) {
         thumbnailUrl: (vi['imageLinks'] != null)
             ? vi['imageLinks']['smallThumbnail']
             : "",
-        categories: (vi['categories'] != null)
-            ? (vi['categories'] as List).join(", ")
-            : "Not classified"));
+        categories:
+            (vi['categories'] != null) ? (convertToString(vi['categories'])) :
+            [],
+        description: (vi['description'] != null)
+            ? vi['description']
+            : "No description found"));
   });
   bookAdd(list);
+}
+
+List<String> convertToString(List<dynamic> list) {
+  List<String> cList = List();
+  list.forEach((ele) => cList.add(ele.toString()));
+  return cList;
 }

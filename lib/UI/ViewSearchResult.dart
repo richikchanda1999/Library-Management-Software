@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:library_management/BLoC/SearchBLoC.dart';
 import 'package:library_management/Model/Book.dart';
+import 'package:library_management/UI/BookDetails.dart';
 import 'package:library_management/support.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart' as http;
@@ -40,36 +41,32 @@ class MyScaffold extends StatelessWidget {
                   clipper: MyPath(),
                   child: Container(
                     color: Color(0xffC1BDFC),
-                    child: Stack(
-                      children: <Widget>[
-                        MyStackWidget(
-                          top: 110,
-                          start: 295,
-                          bottom: 67,
-                          end: 44,
-                          child: new Container(
-                            decoration: BoxDecoration(
-                              color: Color(0xff2f3c7e),
-                              shape: BoxShape.circle,
-                            ),
-                            child: Stack(
-                              children: <Widget>[
-                                MyStackWidget(
-                                  top: 9,
-                                  start: 7,
-                                  bottom: 5,
-                                  end: 7,
-                                  child: SvgPicture.asset(
-                                    "assets/filter.svg",
-                                    semanticsLabel: "Filter",
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
-                    )
+                  ),
+                ),
+              ),
+              MyStackWidget(
+                top: 110,
+                start: 295,
+                bottom: 67,
+                end: 44,
+                child: new Container(
+                  decoration: BoxDecoration(
+                    color: Color(0xff2f3c7e),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Stack(
+                    children: <Widget>[
+                      MyStackWidget(
+                        top: 9,
+                        start: 7,
+                        bottom: 5,
+                        end: 7,
+                        child: SvgPicture.asset(
+                          "assets/filter.svg",
+                          semanticsLabel: "Filter",
+                        ),
+                      )
+                    ],
                   ),
                 ),
               ),
@@ -95,6 +92,13 @@ class MyScaffold extends StatelessWidget {
                                       height: h(160),
                                       child: MyCard(
                                         book: books[__],
+                                        onTap: () {
+                                          Navigator.of(context)
+                                              .push(MaterialPageRoute(
+                                                  builder: (____) => BookDetail(
+                                                        book: books[__],
+                                                      )));
+                                        },
                                       ));
                                 },
                                 separatorBuilder: (_, __) {
@@ -116,76 +120,86 @@ class MyScaffold extends StatelessWidget {
 
 class MyCard extends StatelessWidget {
   Book book;
-  MyCard({this.book});
+  Function onTap;
+  MyCard({this.book, this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(sp(20.0))),
-      elevation: 5.0,
-      margin: EdgeInsets.all(0),
-      child: Stack(
-        children: <Widget>[
-          MyStackWidget(
-            top: 15,
-            bottom: 16,
-            start: 15,
-            end: 235,
-            child: book.thumbnailUrl != ""
-                ? Image.network(
-                    book.thumbnailUrl,
-                  )
-                : Center(
-                    child: Text("No image", textAlign: TextAlign.center,),
-                  ),
-          ),
-          MyStackWidget(
-            top: 30,
-            start: 90,
-            bottom: 60,
-            end: 13,
-            child: Text(
-              book.title,
-              maxLines: 3,
-              style: TextStyle(
-                  color: Color(0xff283350),
-                  fontSize: sp(17),
-                  // fontWeight: FontWeight.w400,
-                  fontFamily: "Raleway Medium"),
+    return GestureDetector(
+      onTap: onTap,
+      child: Card(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(sp(20.0))),
+        elevation: 5.0,
+        margin: EdgeInsets.all(0),
+        child: Stack(
+          children: <Widget>[
+            MyStackWidget(
+              top: 15,
+              bottom: 16,
+              start: 15,
+              end: 235,
+              child: Hero(
+                tag: book,
+                child: book.thumbnailUrl != ""
+                    ? Image.network(
+                        book.thumbnailUrl,
+                      )
+                    : Center(
+                        child: Text(
+                          "No image",
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+              ),
             ),
-          ),
-          MyStackWidget(
-            top: 95,
-            start: 90,
-            bottom: 50,
-            end: 10,
-            child: Text(
-              book.author,
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                  color: Color(0xff283350),
-                  fontSize: sp(13),
-                  // fontWeight: FontWeight.w400,
-                  fontFamily: "Raleway Light"),
+            MyStackWidget(
+              top: 30,
+              start: 90,
+              bottom: 60,
+              end: 13,
+              child: Text(
+                book.title,
+                maxLines: 3,
+                style: TextStyle(
+                    color: Color(0xff283350),
+                    fontSize: sp(17),
+                    // fontWeight: FontWeight.w400,
+                    fontFamily: "Raleway Medium"),
+              ),
             ),
-          ),
-          MyStackWidget(
-            top: 115,
-            start: 90,
-            bottom: 15,
-            end: 10,
-            child: Text(
-              "Genre : ${book.categories}",
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                  color: Color(0xff283350),
-                  fontSize: sp(13),
-                  // fontWeight: FontWeight.w400,
-                  fontFamily: "Raleway Light"),
+            MyStackWidget(
+              top: 95,
+              start: 90,
+              bottom: 50,
+              end: 10,
+              child: Text(
+                book.author,
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                    color: Color(0xff283350),
+                    fontSize: sp(13),
+                    // fontWeight: FontWeight.w400,
+                    fontFamily: "Raleway Light"),
+              ),
             ),
-          ),
-        ],
+            MyStackWidget(
+              top: 115,
+              start: 90,
+              bottom: 15,
+              end: 10,
+              child: Text(
+                "Genre : ${book.categories.join(", ")}",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                    color: Color(0xff283350),
+                    fontSize: sp(13),
+                    // fontWeight: FontWeight.w400,
+                    fontFamily: "Raleway Light"),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

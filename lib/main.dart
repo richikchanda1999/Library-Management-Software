@@ -25,3 +25,5 @@ class MyScaffold extends StatelessWidget {
     return Scaffold();
   }
 }
+
+void main() => runApp(SearchBooks());
