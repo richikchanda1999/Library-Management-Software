@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:library_management/BLoC/SearchBLoC.dart';
+import 'package:library_management/Model/Book.dart';
 import 'package:library_management/support.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:http/http.dart' as http;
 
 class SearchResult extends StatelessWidget {
   @override
@@ -75,20 +78,33 @@ class MyScaffold extends StatelessWidget {
                 end: 31,
                 top: 215,
                 bottom: 37,
-                child: ListView.separated(
-                    padding: EdgeInsets.only(left: w(8), right: w(8), bottom: h(16)),
-                    itemBuilder: (_, __) {
-                      return SizedBox(
-                        height: h(160),
-                        child: MyCard()
-                      );
-                    },
-                    separatorBuilder: (_, __) {
-                      return Padding(
-                          padding: EdgeInsets.only(top: h(20)));
-                    },
-                    itemCount: 10),
-
+                child: StreamBuilder<List<Book>>(
+                    stream: bookStream,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        List<Book> books = snapshot.data;
+                        return books.length == 0
+                            ? Center(
+                                child: Text("No books to display!"),
+                              )
+                            : ListView.separated(
+                                padding: EdgeInsets.only(
+                                    left: w(8), right: w(8), bottom: h(16)),
+                                itemBuilder: (_, __) {
+                                  return SizedBox(
+                                      height: h(160),
+                                      child: MyCard(
+                                        book: books[__],
+                                      ));
+                                },
+                                separatorBuilder: (_, __) {
+                                  return Padding(
+                                      padding: EdgeInsets.only(top: h(20)));
+                                },
+                                itemCount: books.length);
+                      } else
+                        return Center(child: CircularProgressIndicator());
+                    }),
               )
             ],
           ),
@@ -99,15 +115,14 @@ class MyScaffold extends StatelessWidget {
 }
 
 class MyCard extends StatelessWidget {
-  String path;
-  MyCard({this.path});
+  Book book;
+  MyCard({this.book});
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(sp(20.0))
-      ),
+      shape:
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(sp(20.0))),
       elevation: 5.0,
       margin: EdgeInsets.all(0),
       child: Stack(
@@ -115,14 +130,15 @@ class MyCard extends StatelessWidget {
           MyStackWidget(
             top: 15,
             bottom: 16,
-            start:15,
+            start: 15,
             end: 235,
-
-            child: SvgPicture.asset(
-              "assets/Book front.svg",
-              semanticsLabel: "Book",
-            ),
-
+            child: book.thumbnailUrl != ""
+                ? Image.network(
+                    book.thumbnailUrl,
+                  )
+                : Center(
+                    child: Text("No image", textAlign: TextAlign.center,),
+                  ),
           ),
           MyStackWidget(
             top: 30,
@@ -130,7 +146,8 @@ class MyCard extends StatelessWidget {
             bottom: 60,
             end: 13,
             child: Text(
-              "The Sun The Moon The Stars",
+              book.title,
+              maxLines: 3,
               style: TextStyle(
                   color: Color(0xff283350),
                   fontSize: sp(17),
@@ -142,9 +159,10 @@ class MyCard extends StatelessWidget {
             top: 95,
             start: 90,
             bottom: 50,
-            end: 130,
+            end: 10,
             child: Text(
-              "Junot Diaz",
+              book.author,
+              textAlign: TextAlign.left,
               style: TextStyle(
                   color: Color(0xff283350),
                   fontSize: sp(13),
@@ -156,9 +174,10 @@ class MyCard extends StatelessWidget {
             top: 115,
             start: 90,
             bottom: 15,
-            end: 130,
+            end: 10,
             child: Text(
-              "BOOK ID: xyz",
+              "Genre : ${book.categories}",
+              textAlign: TextAlign.left,
               style: TextStyle(
                   color: Color(0xff283350),
                   fontSize: sp(13),
@@ -171,4 +190,3 @@ class MyCard extends StatelessWidget {
     );
   }
 }
-
