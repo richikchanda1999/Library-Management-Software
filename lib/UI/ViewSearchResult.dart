@@ -10,6 +10,7 @@ class SearchResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MyScaffold(),
     );
   }
@@ -39,6 +40,36 @@ class MyScaffold extends StatelessWidget {
                   clipper: MyPath(),
                   child: Container(
                     color: Color(0xffC1BDFC),
+                    child: Stack(
+                      children: <Widget>[
+                        MyStackWidget(
+                          top: 110,
+                          start: 295,
+                          bottom: 67,
+                          end: 44,
+                          child: new Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xff2f3c7e),
+                              shape: BoxShape.circle,
+                            ),
+                            child: Stack(
+                              children: <Widget>[
+                                MyStackWidget(
+                                  top: 9,
+                                  start: 7,
+                                  bottom: 5,
+                                  end: 7,
+                                  child: SvgPicture.asset(
+                                    "assets/filter.svg",
+                                    semanticsLabel: "Filter",
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    )
                   ),
                 ),
               ),
