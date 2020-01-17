@@ -56,13 +56,13 @@ class MyScaffold extends StatelessWidget {
                   book.title,
                   style: TextStyle(
                       color: Color(0xff283350),
-                      fontSize: sp(21),
+                      fontSize: sp(18),
                       // fontWeight: FontWeight.w400,
                       fontFamily: "Raleway Medium"),
                 ),
               ),
               MyStackWidget(
-                top: 338,
+                top: 360,
                 start: 153,
                 bottom: 51,
                 end: 28,
@@ -88,89 +88,71 @@ class MyScaffold extends StatelessWidget {
                 ),
               ),
               MyStackWidget(
-                top: 451,
+                top: 440,
                 start: 30,
-                bottom: 340,
                 end: 30,
+                height: 25,
                 child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
                   separatorBuilder: (_, __) {
                     return Padding(
                       padding: EdgeInsets.only(left: w(16)),
                     );
                   },
                   itemBuilder: (context, index) {
-                    return Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                          color: Color(0xffccdaf9),
-                          boxShadow: <BoxShadow>[
-                            BoxShadow(
-                                color: Colors.black.withOpacity(0.2),
-                                blurRadius: 4,
-                                offset: Offset(0, 1.5)),
-                            BoxShadow(
-                                color: Colors.white,
-                                blurRadius: 5,
-                                offset: Offset(0, -1.5)),
-                          ]),
-                      child: Center(
-                          child: Text(
-                        book.categories[index],
-                        style: TextStyle(
-                            fontFamily: "Ubuntu Light",
-                            fontSize: 11,
-                            color: Color(0xff283350)),
-                      )),
+                    return SizedBox(
+                      width: w(150),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20.0)),
+                            color: Color(0xffccdaf9),
+                            boxShadow: <BoxShadow>[
+                              BoxShadow(
+                                  color: Colors.black.withOpacity(0.2),
+                                  blurRadius: 4,
+                                  offset: Offset(0, 1.5)),
+                              BoxShadow(
+                                  color: Colors.white,
+                                  blurRadius: 5,
+                                  offset: Offset(0, -1.5)),
+                            ]),
+                        child: Center(
+                            child: Text(
+                          book.categories[index],
+                          maxLines: 2,
+                          style: TextStyle(
+                              fontFamily: "Ubuntu Light",
+                              fontSize: 11,
+                              color: Color(0xff283350)),
+                        )),
+                      ),
                     );
                   },
                   itemCount: book.categories.length,
                 ),
               ),
               MyStackWidget(
-                top: 451,
-                start: 128,
-                bottom: 340,
-                end: 160,
-                child: new Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                    color: Color(0xffccdaf9),
-                    boxShadow: <BoxShadow>[
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.2),
-                          blurRadius: 4,
-                          offset: Offset(0, 1.5)),
-                      BoxShadow(
-                          color: Colors.white,
-                          blurRadius: 5,
-                          offset: Offset(0, -1.5)),
-                    ],
-                  ),
-                  child: Center(
-                      child: Text(
-                    "Relationships",
-                    style: TextStyle(
-                        fontFamily: "Ubuntu Light",
-                        fontSize: 11,
-                        color: Color(0xff283350)),
-                  )),
-                ),
-              ),
-              MyStackWidget(
-                top: 522,
+                top: 490,
                 start: 28,
-                bottom: 177,
+                bottom: 140,
                 end: 28,
                 child: new Container(
                   child: Center(
+                      child: SingleChildScrollView(
+                    child: SizedBox(
+                      width: w(375-56),
+                      height: h(812 - (480 + 150)),
                       child: Text(
-                    book.description,
-                    textAlign: TextAlign.justify,
-                    maxLines: 10,
-                    style: TextStyle(
-                      fontFamily: "Ubuntu Light",
-                      fontSize: 14,
-                      color: Color(0xff283350),
+                        book.description,
+                        textAlign: TextAlign.justify,
+                        maxLines: 10,
+                        style: TextStyle(
+                          fontFamily: "Ubuntu Light",
+                          fontSize: 14,
+                          color: Color(0xff283350),
+                        ),
+                      ),
                     ),
                   )),
                 ),
