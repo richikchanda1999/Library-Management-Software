@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:library_management/BLoC/LoginBLoC.dart';
+import 'package:library_management/UI/SearchBooks.dart';
 import 'package:library_management/support.dart';
+import 'package:page_transition/page_transition.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -62,10 +65,16 @@ class MyScaffold extends StatelessWidget {
                 height: 44,
                 //width: 260,
                 child: TextField(
+                  onChanged: (s) {
+                    addUsername(s);
+                  },
+                  style: TextStyle(
+                      fontFamily: "Ubuntu Light", color: Color(0xff645BEB)),
                   decoration: InputDecoration(
                     filled: true,
                     hintText: 'Username',
-                    hintStyle: TextStyle(color: Color(0xff645BEB)),
+                    hintStyle: TextStyle(
+                        fontFamily: "Ubuntu Light", color: Color(0xff645BEB)),
                     contentPadding: EdgeInsets.only(left: w(20), top: h(5)),
                     // fillColor: Colors.indigoAccent[50],
                     fillColor: Color(0xffDDDBFE).withOpacity(0.5),
@@ -87,11 +96,17 @@ class MyScaffold extends StatelessWidget {
                 height: 44,
                 //width: 260,
                 child: TextField(
+                  onChanged: (s) {
+                    addPassword(s);
+                  },
+                  style: TextStyle(
+                      fontFamily: "Ubuntu Light", color: Color(0xff645BEB)),
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.only(left: w(20), top: h(5)),
                     filled: true,
                     hintText: 'Password',
-                    hintStyle: TextStyle(color: Color(0xff645BEB)),
+                    hintStyle: TextStyle(
+                        fontFamily: "Ubuntu Light", color: Color(0xff645BEB)),
                     fillColor: Color(0xffDDDBFE).withOpacity(0.5),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(120),
@@ -126,8 +141,15 @@ class MyScaffold extends StatelessWidget {
                     //side: BorderSide(color: Colors.red)
                   ),
                   // color: Colors.deepPurpleAccent,
-                  onPressed: () {
-                    // TODO: Show the next page (101)
+                  onPressed: () async {
+                    int ret = await login();
+                    if (ret == 1)
+                      Navigator.push(
+                          context,
+                          PageTransition(
+                              duration: Duration(milliseconds: 800),
+                              type: PageTransitionType.downToUp,
+                              child: SearchBooks()));
                   },
 
                   splashColor: Colors.grey,

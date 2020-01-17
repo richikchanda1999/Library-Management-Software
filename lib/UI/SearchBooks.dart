@@ -1,30 +1,36 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:library_management/BLoC/SearchBLoC.dart';
+import 'package:library_management/UI/Intro.dart';
 import 'package:library_management/UI/ViewSearchResult.dart';
 import 'package:library_management/main.dart';
 import 'package:library_management/support.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:http/http.dart' as http;
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SearchBooks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MyScaffold(),
+      home: SearchBookScaffold(),
     );
   }
 }
 
-class MyScaffold extends StatefulWidget {
+TextEditingController controller = TextEditingController();
+
+class SearchBookScaffold extends StatefulWidget {
   @override
-  _MyScaffoldState createState() => _MyScaffoldState();
+  _SearchBookScaffoldState createState() => _SearchBookScaffoldState();
 }
 
-class _MyScaffoldState extends State<MyScaffold> {
+class _SearchBookScaffoldState extends State<SearchBookScaffold> {
   bool _hasSpeech = false;
   String lastWords = "";
   String lastError = "";
@@ -55,6 +61,16 @@ class _MyScaffoldState extends State<MyScaffold> {
     });
   }
 
+  void search(String s) {
+    s = s.replaceAll(" ", "+");
+    String url = "https://www.googleapis.com/books/v1/volumes?q=" +
+        s +
+        "&orderBy=relevance";
+    fetchBooks(url);
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (_) => SearchResult()));
+  }
+
   void startListening() {
     lastWords = "";
     lastError = "";
@@ -62,13 +78,7 @@ class _MyScaffoldState extends State<MyScaffold> {
       if (result.finalResult) {
         String recognised = result.recognizedWords;
         //print("Recognised : $recognised");
-        recognised = recognised.replaceAll(" ", "+");
-        String url = "https://www.googleapis.com/books/v1/volumes?q=" +
-            recognised + "&orderBy=relevance";
-        fetchBooks(url);
-        Navigator.of(context).pop(this);
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (_) => SearchResult()));
+        search(recognised);
       }
     });
     setState(() {});
@@ -131,23 +141,29 @@ class _MyScaffoldState extends State<MyScaffold> {
                   path: "assets/speaker.svg",
                   onTap: () {
                     startListening();
-                    showDialog(
-                        context: context,
-                        barrierDismissible: false,
-                        builder: (_) {
-                          return Dialog(
-                            child: Center(
-                              child: IconButton(
-                                icon: Icon(Icons.cancel),
-                                onPressed: () {
-                                  Navigator.of(context).pop(this);
-                                  stopListening();
-                                  cancelListening();
-                                },
-                              ),
-                            ),
-                          );
-                        });
+                    Fluttertoast.showToast(msg: "Listening... Try speaking");
+                    Future.delayed(Duration(seconds: 5)).then((v) {
+                      stopListening();
+                      cancelListening();
+                      Fluttertoast.showToast(msg: "Stopped listening...");
+                    });
+//                    showDialog(
+//                        context: context,
+//                        barrierDismissible: false,
+//                        builder: (_) {
+//                          return Dialog(
+//                            child: Center(
+//                              child: IconButton(
+//                                icon: Icon(Icons.cancel),
+//                                onPressed: () {
+//                                  Navigator.of(context).pop(this);
+//                                  stopListening();
+//                                  cancelListening();
+//                                },
+//                              ),
+//                            ),
+//                          );
+//                        });
                   },
                 ),
               ),
@@ -157,8 +173,19 @@ class _MyScaffoldState extends State<MyScaffold> {
                 start: 214,
                 height: 60,
                 width: 60,
-                child: CircularButton(
-                  path: "assets/scan.svg",
+                child: GestureDetector(
+                  onTap: () async {
+                    await FirebaseAuth.instance.signOut();
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            duration: Duration(milliseconds: 800),
+                            type: PageTransitionType.fade,
+                            child: IntroScreen()));
+                  },
+                  child: CircularButton(
+                    path: "assets/scan.svg",
+                  ),
                 ),
               ),
               MyStackWidget(
@@ -179,10 +206,17 @@ class _MyScaffoldState extends State<MyScaffold> {
                 height: 42,
                 end: 44,
                 child: TextField(
+                  controller: controller,
                   style: TextStyle(
                       color: Color(0xff645BEB), fontFamily: "Ubuntu Light"),
                   decoration: InputDecoration(
                     filled: true,
+                    suffix: IconButton(
+                        icon: Icon(Icons.search, size: h(18),),
+                        onPressed: () {
+                          search(controller.value.text);
+                          controller.value = TextEditingValue(text: "");
+                        }),
                     hintText: 'Type To Search',
                     hintStyle: TextStyle(
                         color: Color(0xff645BEB), fontFamily: "Ubuntu Light"),
