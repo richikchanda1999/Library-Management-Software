@@ -10,6 +10,7 @@ Stream<List<Book>> get bookStream => bookSearchController.stream;
 
 void fetchBooks(String url) async {
   final res = await http.get(url);
+  print("Url : $url");
   if (res.statusCode == 200) {
     String ret = res.body;
     //print(ret);

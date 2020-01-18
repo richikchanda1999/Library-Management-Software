@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "735953519617",
+    "firebase_url": "https://library-management-facbf.firebaseio.com",
+    "project_id": "library-management-facbf",
+    "storage_bucket": "library-management-facbf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:735953519617:android:94956db808f9c0abceec00",
+        "android_client_info": {
+          "package_name": "sih.iiitg.library_management"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "735953519617-c03moub5d668qjsljqjqn6g0kefa8ed1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sih.iiitg.library_management",
+            "certificate_hash": "dc8f0b78600f3de548e577a4dc049d61680b69a9"
+          }
+        },
+        {
+          "client_id": "735953519617-s9kgih858cjcgbi0sjepoinj0ejfkqlk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8xSEIE39zqv7-1KVbU-9MPlhVaGq_es8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "735953519617-s9kgih858cjcgbi0sjepoinj0ejfkqlk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

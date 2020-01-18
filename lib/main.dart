@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:library_management/UI/Intro.dart';
 
 import 'package:library_management/UI/SearchBooks.dart';
 
@@ -10,7 +11,7 @@ import 'UI/Teacher_Home_Page.dart';
 import 'UI/ViewSearchResult.dart' as search;
 import 'UI/ViewSearchResult.dart';
 import 'UI/BookDetails.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Main extends StatelessWidget {
   @override
@@ -28,4 +29,12 @@ class MyScaffold extends StatelessWidget {
   }
 }
 
-void main() => runApp(TeacherHomePage());
+void main() {
+  runApp(IntroScreen());
+}
+
+void signIn({String user, String password}) {
+  FirebaseAuth.instance
+      .createUserWithEmailAndPassword(email: user, password: password);
+  FirebaseAuth.instance.signOut();
+}
