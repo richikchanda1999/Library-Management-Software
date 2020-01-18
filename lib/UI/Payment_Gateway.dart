@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:library_management/BLoC/PaymentBLoC.dart';
 import 'package:library_management/support.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -13,7 +14,20 @@ class PaymentGateway extends StatelessWidget {
   }
 }
 
-class MyScaffold extends StatelessWidget {
+class MyScaffold extends StatefulWidget {
+  @override
+  _MyScaffoldState createState() => _MyScaffoldState();
+}
+
+class _MyScaffoldState extends State<MyScaffold> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    init();
+  }
+
   @override
   Widget build(BuildContext context) {
     Orientation o = MediaQuery.of(context).orientation;
@@ -84,7 +98,7 @@ class MyScaffold extends StatelessWidget {
                   ),
                   // color: Colors.deepPurpleAccent,
                   onPressed: () {
-
+                    pay("130");
                   },
 
                   splashColor: Colors.grey,

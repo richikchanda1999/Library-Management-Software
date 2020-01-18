@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:library_management/UI/SearchBooks.dart';
+import 'package:library_management/UI/Teacher_Home_Page.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../support.dart';
@@ -17,7 +18,7 @@ class IntroScreen extends StatelessWidget {
           builder: (context, snapshot) {
             return (!snapshot.hasData || snapshot.data == null)
                 ? IntroScaffold()
-                : SearchBookScaffold();
+                : TeacherHomePageScaffold();
           }),
     );
   }

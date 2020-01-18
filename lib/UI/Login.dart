@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:library_management/BLoC/LoginBLoC.dart';
 import 'package:library_management/UI/SearchBooks.dart';
+import 'package:library_management/UI/Teacher_Home_Page.dart';
 import 'package:library_management/support.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -149,7 +150,7 @@ class MyScaffold extends StatelessWidget {
                           PageTransition(
                               duration: Duration(milliseconds: 800),
                               type: PageTransitionType.downToUp,
-                              child: SearchBooks()));
+                              child: TeacherHomePage()));
                   },
 
                   splashColor: Colors.grey,

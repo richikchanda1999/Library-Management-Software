@@ -36,6 +36,7 @@ android {
         applicationId "sih.iiitg.library_management"
         minSdkVersion 21
         targetSdkVersion 28
+        multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

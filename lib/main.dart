@@ -4,7 +4,6 @@ import 'package:library_management/UI/Intro.dart';
 import 'package:library_management/UI/SearchBooks.dart';
 
 import 'package:library_management/UI/Login.dart';
-import 'package:library_management/UI/Test.dart';
 import 'UI/BarcodeScan.dart';
 import 'UI/Payment_Gateway.dart';
 import 'UI/Teacher_Home_Page.dart';
@@ -30,7 +29,7 @@ class MyScaffold extends StatelessWidget {
 }
 
 void main() {
-  runApp(IntroScreen());
+  runApp(TeacherHomePage());
 }
 
 void signIn({String user, String password}) {
